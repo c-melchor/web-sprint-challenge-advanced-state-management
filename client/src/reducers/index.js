@@ -7,15 +7,21 @@ export const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case FETCH_SMURFS:
-      return { ...state, loading: true };
-    case FETCH_SMURF_SUCCESS:
-      console.log(action.payload, "PAYLOAD");
-      return { ...state, smurfs: action.payload, loading: false };
-    default:
-      return state;
+  if (action.type === FETCH_SMURFS) {
+    return { ...state, loading: true };
   }
+  //   switch (action.type) {
+  //     case FETCH_SMURFS:
+  //       return { ...state, loading: true };
+  //     case FETCH_SMURF_SUCCESS:
+  //       return {
+  //         ...state,
+  //         smurfs: [...state.smurfs, action.payload],
+  //         loading: false
+  //       };
+  // default:
+  return state;
+  //   }
 };
 
 export default reducer;

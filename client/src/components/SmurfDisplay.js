@@ -3,9 +3,11 @@ import { fetchSmurfs } from "../actions";
 import { connect } from "react-redux";
 
 const SmurfDisplay = props => {
+  console.log(props.state.smurfs, "smurfs");
   useEffect(() => {
     props.fetchSmurfs();
   }, []);
+  console.log(props.state.smurfs, "smurfs2");
 
   return (
     <div>
