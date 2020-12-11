@@ -1,4 +1,4 @@
-import React, { Component, useReducer } from "react";
+import React, { useReducer } from "react";
 
 import AddForm from "./components/AddForm";
 import SmurfDisplay from "./components/SmurfDisplay";
@@ -9,7 +9,6 @@ import reducer, { initialState } from "./reducers";
 
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  console.log(state, "APP STATE");
   return (
     <div className="App">
       <nav className="navbar navbar-dark bg-primary">
