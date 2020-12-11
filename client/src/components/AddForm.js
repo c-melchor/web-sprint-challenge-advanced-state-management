@@ -1,22 +1,42 @@
-import React from 'react';
+import React from "react";
 
-class AddForm extends React.Component {
+const AddForm = () => {
+  const handleChange = e => {
+    console.log(e.target.value);
+  };
 
-    render() {
-        return(<section>
-            <h2>Add Smurf</h2>
-            <form>
-                <div className="form-group">
-                    <label htmlFor="name">Name:</label><br/>
-                    <input onChange={this.handleChange} name="name" id="name" />
-                </div>
+  const onSubmit = e => {
+    e.preventDefault();
+  };
 
-                <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: </div>
-                <button>Submit Smurf</button>
-            </form>
-        </section>);
-    }
-}
+  return (
+    <section>
+      <h2>Add Smurf</h2>
+      <form onSubmit={onSubmit}>
+        <div className="form-group">
+          <label htmlFor="name">Name:</label>
+          <br />
+          <input onChange={handleChange} name="name" id="name" />
+          <label htmlFor="position">Position:</label>
+          <br />
+          <input onChange={handleChange} name="position" id="position" />
+          <label htmlFor="description">Description:</label>
+          <br />
+          <input onChange={handleChange} name="description" id="description" />
+        </div>
+
+        <div
+          data-testid="errorAlert"
+          className="alert alert-danger"
+          role="alert"
+        >
+          Error:{" "}
+        </div>
+        <button>Submit Smurf</button>
+      </form>
+    </section>
+  );
+};
 
 export default AddForm;
 

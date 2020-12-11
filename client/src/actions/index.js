@@ -1,16 +1,17 @@
 import axios from "axios";
 
 export const FETCH_SMURFS = "FETCH_SMURFS";
+export const FETCH_SMURF_SUCCESS = "FETCH_SMURF_SUCCESS";
 export const ADD_SMURF = "ADD_SMURF";
 export const SET_ERROR_TEXT = "SET_ERROR_TEXT";
-export const FETCHING_QUOTE_START = "FETCHING_QUOTE_START";
 
 export const fetchSmurfs = () => dispatch => {
-  dispatch({ type: FETCHING_QUOTE_START });
+  dispatch({ type: FETCH_SMURFS });
   axios
     .get("http://localhost:3333/smurfs")
     .then(res => {
-      console.log(res, "ACTION RES here!!!******");
+      console.log(res, "RES HERE");
+      dispatch({ type: FETCH_SMURF_SUCCESS, payload: res.data });
     })
     .catch(err => {
       console.log(err);
