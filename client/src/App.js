@@ -5,11 +5,11 @@ import SmurfDisplay from "./components/SmurfDisplay";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import reducer from "./reducers";
+import reducer, { initialState } from "./reducers";
 
 const App = () => {
-  const [state, dispatch] = useReducer(reducer);
-
+  const [state, dispatch] = useReducer(reducer, initialState);
+  console.log(state, "APP STATE");
   return (
     <div className="App">
       <nav className="navbar navbar-dark bg-primary">

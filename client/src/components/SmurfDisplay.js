@@ -1,7 +1,8 @@
 import React from "react";
+import { FETCH_SMURFS } from "../actions";
 
 const SmurfDisplay = props => {
-  console.log(props, "PROPS HERE");
+  console.log(props, "PROPS IN DISPLAY");
   return <div></div>;
 };
 

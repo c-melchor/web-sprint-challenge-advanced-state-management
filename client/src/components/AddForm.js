@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
+import { FETCH_SMURFS } from "../actions";
 
-const AddForm = () => {
+const AddForm = props => {
+  //   const [formData, setFormData] = useState("");
+
   const handleChange = e => {
     console.log(e.target.value);
   };
 
   const onSubmit = e => {
     e.preventDefault();
+    // setFormData(e.target);
+    // console.log(e.target.value);
   };
 
   return (
