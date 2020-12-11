@@ -1,3 +1,5 @@
+import { fetchSmurfs } from "../actions";
+
 export const initialState = {
   smurfs: [],
   loading: false,
@@ -6,8 +8,8 @@ export const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    //   case (startApi):
-    //       return {...state, loading:true};
+    case fetchSmurfs:
+      return { ...state, loading: true };
     default:
       return state;
   }

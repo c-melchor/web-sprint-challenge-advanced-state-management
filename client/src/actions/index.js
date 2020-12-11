@@ -3,9 +3,18 @@ import axios from "axios";
 export const FETCH_SMURFS = "FETCH_SMURFS";
 export const ADD_SMURF = "ADD_SMURF";
 export const SET_ERROR_TEXT = "SET_ERROR_TEXT";
+export const FETCHING_QUOTE_START = "FETCHING_QUOTE_START";
 
-export const fetchSmurfs = data => {
-  return { type: FETCH_SMURFS, payload: data };
+export const fetchSmurfs = () => dispatch => {
+  dispatch({ type: FETCHING_QUOTE_START });
+  axios
+    .get("http://localhost:3333/smurfs")
+    .then(res => {
+      console.log(res, "ACTION RES here!!!******");
+    })
+    .catch(err => {
+      console.log(err);
+    });
 };
 
 export const addSmurf = newSmurf => {
