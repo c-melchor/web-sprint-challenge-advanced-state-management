@@ -3,10 +3,15 @@ import { addSmurf } from "../actions";
 import { connect } from "react-redux";
 
 const AddForm = props => {
-  const [formData, setFormData] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    position: "",
+    description: ""
+  });
 
   const handleChange = e => {
-    setFormData(e.target.value);
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
   const onSubmit = e => {
