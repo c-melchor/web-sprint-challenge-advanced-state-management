@@ -1,17 +1,18 @@
 import React, { useState } from "react";
-import { FETCH_SMURFS } from "../actions";
+import { addSmurf } from "../actions";
+import { connect } from "react-redux";
 
 const AddForm = props => {
-  //   const [formData, setFormData] = useState("");
+  const [formData, setFormData] = useState("");
 
   const handleChange = e => {
-    console.log(e.target.value);
+    setFormData(e.target.value);
   };
 
   const onSubmit = e => {
     e.preventDefault();
-    // setFormData(e.target);
-    // console.log(e.target.value);
+    props.addSmurf(formData);
+    console.log(formData);
   };
 
   return (
@@ -43,7 +44,7 @@ const AddForm = props => {
   );
 };
 
-export default AddForm;
+export default connect(null, { addSmurf })(AddForm);
 
 //Task List:
 //1. Add in all necessary import components and library methods.

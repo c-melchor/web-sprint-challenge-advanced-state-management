@@ -3,11 +3,12 @@ import { fetchSmurfs } from "../actions";
 import { connect } from "react-redux";
 
 const SmurfDisplay = props => {
-  console.log(props.state.smurfs, "smurfs");
   useEffect(() => {
     props.fetchSmurfs();
+    setTimeout(() => {
+      console.log(props.state.smurfs.smurfs, "HELLO SMURFS");
+    }, 3000);
   }, []);
-  console.log(props.state.smurfs, "smurfs2");
 
   return (
     <div>
@@ -25,4 +26,9 @@ const SmurfDisplay = props => {
 //4. Render loading text or graphic if the application is currently loading.
 //5. Render a list of all Smurfs using the Smurf component if the application is not currently loading.
 
-export default connect(null, { fetchSmurfs })(SmurfDisplay);
+const mapStateToProps = state => {
+  console.log(state, "mapstate here");
+  return { ...state, smurfs: [...state.smurfs] };
+};
+
+export default connect(mapStateToProps, { fetchSmurfs })(SmurfDisplay);

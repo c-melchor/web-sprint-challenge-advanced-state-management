@@ -1,4 +1,4 @@
-import { FETCH_SMURFS, FETCH_SMURF_SUCCESS } from "../actions";
+import { FETCH_SMURFS, ADD_SMURF, FETCH_SMURF_SUCCESS } from "../actions";
 
 export const initialState = {
   smurfs: [],
@@ -9,6 +9,15 @@ export const initialState = {
 const reducer = (state = initialState, action) => {
   if (action.type === FETCH_SMURFS) {
     return { ...state, loading: true };
+  } else if (action.type === FETCH_SMURF_SUCCESS) {
+    return {
+      ...state,
+      smurfs: [action.payload],
+      loading: false
+    };
+  } else if (action.payload === ADD_SMURF) {
+    console.log(action, "ADD SMURF ACIOTN??????");
+    return { ...state, smurfs: [...state.smurfs].push(action.payload) };
   }
   //   switch (action.type) {
   //     case FETCH_SMURFS:

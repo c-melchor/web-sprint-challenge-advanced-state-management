@@ -17,9 +17,9 @@ export const fetchSmurfs = () => dispatch => {
     });
 };
 
-// export const addSmurf = newSmurf => {
-//   return { type: ADD_SMURF, payload: newSmurf };
-// };
+export const addSmurf = newSmurf => dispatch => {
+  dispatch({ type: ADD_SMURF, payload: newSmurf });
+};
 
 // export const errorText = error => {
 //   return { type: SET_ERROR_TEXT };
