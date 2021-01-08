@@ -1,36 +1,39 @@
-import { FETCH_SMURFS, ADD_SMURF, FETCH_SMURF_SUCCESS } from "../actions";
+import {
+  FETCH_SMURFS,
+  FETCH_SMURFS_SUCCESS,
+  FETCH_SMURFS_ERROR
+} from "../actions";
+import axios from "axios";
 
 export const initialState = {
+  isLoading: false,
   smurfs: [],
-  loading: false,
   error: ""
 };
 
 const reducer = (state = initialState, action) => {
-  if (action.type === FETCH_SMURFS) {
-    return { ...state, loading: true };
-  } else if (action.type === FETCH_SMURF_SUCCESS) {
-    return {
-      ...state,
-      smurfs: [action.payload],
-      loading: false
-    };
-  } else if (action.payload === ADD_SMURF) {
-    console.log(action, "ADD SMURF ACIOTN??????");
-    return { ...state, smurfs: [...state.smurfs].push(action.payload) };
+  switch (action.type) {
+    case FETCH_SMURFS:
+      return {
+        ...state,
+        isLoading: true,
+        error: ""
+      };
+    case FETCH_SMURFS_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        smurfs: action.payload
+      };
+    case FETCH_SMURFS_ERROR:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload
+      };
+    default:
+      return state;
   }
-  //   switch (action.type) {
-  //     case FETCH_SMURFS:
-  //       return { ...state, loading: true };
-  //     case FETCH_SMURF_SUCCESS:
-  //       return {
-  //         ...state,
-  //         smurfs: [...state.smurfs, action.payload],
-  //         loading: false
-  //       };
-  // default:
-  return state;
-  //   }
 };
 
 export default reducer;

@@ -1,23 +1,30 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { fetchSmurfs } from "../actions";
 import { connect } from "react-redux";
+import Smurf from "./Smurf";
 
-const SmurfDisplay = props => {
-  useEffect(() => {
-    props.fetchSmurfs();
-    setTimeout(() => {
-      console.log(props.state.smurfs.smurfs, "HELLO SMURFS");
-    }, 3000);
-  }, []);
-
-  return (
-    <div>
-      {props.state.smurfs.map(smurf => {
-        return <p>{smurf.name}</p>;
-      })}
-    </div>
-  );
-};
+class SmurfDisplay extends React.Component {
+  componentDidMount() {
+    this.props.fetchSmurfs();
+  }
+  render() {
+    {
+      if (!this.props.smurfs) {
+        return (
+          <div>
+            <p>...loading</p>
+          </div>
+        );
+      } else {
+        return (
+          <div>
+            <Smurf />
+          </div>
+        );
+      }
+    }
+  }
+}
 
 //Task List:
 //1. Import in all needed components and library methods.
@@ -27,8 +34,10 @@ const SmurfDisplay = props => {
 //5. Render a list of all Smurfs using the Smurf component if the application is not currently loading.
 
 const mapStateToProps = state => {
-  console.log(state, "mapstate here");
-  return { ...state, smurfs: [...state.smurfs] };
+  return {
+    smurfs: state.smurfs,
+    isLoading: state.isLoading,
+    error: state.error
+  };
 };
-
 export default connect(mapStateToProps, { fetchSmurfs })(SmurfDisplay);
