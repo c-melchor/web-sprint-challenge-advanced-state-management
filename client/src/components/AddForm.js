@@ -1,41 +1,37 @@
 import React, { useState } from "react";
-import { addSmurf } from "../actions";
+// import { addSmurf } from "../actions";
 import { connect } from "react-redux";
 
 const AddForm = props => {
-  const [formData, setFormData] = useState({
-    name: "",
-    position: "",
-    description: ""
-  });
-
-  const handleChange = e => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const onSubmit = e => {
-    e.preventDefault();
-    props.addSmurf(formData);
-    console.log(formData);
-  };
-
+  //   const [formData, setFormData] = useState({
+  //     name: "",
+  //     position: "",
+  //     description: ""
+  //   });
+  //   const handleChange = e => {
+  //     const { name, value } = e.target;
+  //     setFormData({ ...formData, [name]: value });
+  //   };
+  //   const onSubmit = e => {
+  //     e.preventDefault();
+  //     props.addSmurf(formData);
+  //     console.log(formData);
+  //   };
   return (
     <section>
       <h2>Add Smurf</h2>
-      <form onSubmit={onSubmit}>
+      <form>
         <div className="form-group">
           <label htmlFor="name">Name:</label>
           <br />
-          <input onChange={handleChange} name="name" id="name" />
+          <input name="name" id="name" />
           <label htmlFor="position">Position:</label>
           <br />
-          <input onChange={handleChange} name="position" id="position" />
+          <input name="position" id="position" />
           <label htmlFor="description">Description:</label>
           <br />
-          <input onChange={handleChange} name="description" id="description" />
+          <input name="description" id="description" />
         </div>
-
         <div
           data-testid="errorAlert"
           className="alert alert-danger"
@@ -47,9 +43,11 @@ const AddForm = props => {
       </form>
     </section>
   );
+  // return <div></div>;
 };
 
-export default connect(null, { addSmurf })(AddForm);
+export default AddForm;
+// export default connect(null, { addSmurf })(AddForm);
 
 //Task List:
 //1. Add in all necessary import components and library methods.
